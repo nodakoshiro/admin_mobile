@@ -8,7 +8,7 @@ class Vocabulary {
   });
 
   // プロパティ
-  final int index;
+  int index;
   final String front;
   final String back;
   final String memo;
