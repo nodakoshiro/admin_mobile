@@ -11,17 +11,9 @@ class CardItem extends StatelessWidget {
     super.key,
     this.onTap,
     this.selected = false,
-    required this.animation,
-    required this.item,
-    required this.index,
-    required this.name,
-    required this.message,
-    required this.textReason,
-    required this.colorPrimary,
-    required this.colorPositive,
-    required this.textPositive,
-    required this.colorNegative,
-    required this.textNegative,
+    required this.animation, //ok
+    required this.item, //ok
+    required this.index, //ok
   }) : assert(index >= 0);
 
   final Animation<double> animation;
@@ -29,14 +21,6 @@ class CardItem extends StatelessWidget {
   final int index;
   final Vocabulary item;
   final bool selected;
-  final String name;
-  final String message;
-  final String textReason;
-  final Color colorPrimary;
-  final Color colorPositive;
-  final String textPositive;
-  final Color colorNegative;
-  final String textNegative;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +82,7 @@ class CardItem extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(width: 8),
-                                Flexible(child: Text(message)),
+                                Flexible(child: Text(item.front)),
                               ],
                             ),
                           ),
@@ -115,7 +99,7 @@ class CardItem extends StatelessWidget {
                                     ),
                                   ),
                                   child: Text(
-                                    textReason,
+                                    item.back,
                                     style: const TextStyle(
                                         color: Colors.blueAccent),
                                   ),
@@ -127,7 +111,7 @@ class CardItem extends StatelessWidget {
                                       foregroundColor: colorNegative,
                                     ),
                                     onPressed: () {},
-                                    child: Text(textNegative),
+                                    child: Text(item.front),
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -139,7 +123,7 @@ class CardItem extends StatelessWidget {
                                           colorPositive.withOpacity(0.2),
                                     ),
                                     onPressed: () {},
-                                    child: Text(textPositive),
+                                    child: Text(item.memo),
                                   ),
                                 ),
                               ],

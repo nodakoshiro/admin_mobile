@@ -1,17 +1,17 @@
 import 'package:admin_mobile/import.dart';
 
 void main() {
-  runApp(const MaterialApp(home: AnimatedListSample()));
+  runApp(const MaterialApp(home: WordBook()));
 }
 
-class AnimatedListSample extends StatefulWidget {
-  const AnimatedListSample({super.key});
+class WordBook extends StatefulWidget {
+  const WordBook({super.key});
 
   @override
-  State<AnimatedListSample> createState() => _AnimatedListSampleState();
+  State<WordBook> createState() => _WordBookState();
 }
 
-class _AnimatedListSampleState extends State<AnimatedListSample> {
+class _WordBookState extends State<WordBook> {
   // DatabaseHelper クラスのインスタンス取得
   final dbHelper = DatabaseHelper.instance;
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
@@ -52,7 +52,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
           IconButton(
             icon: const Icon(Icons.remove_circle),
             tooltip: 'remove the selected item',
-            onPressed: _remove,
+            onPressed: remove,
           ),
         ],
       ),
@@ -79,14 +79,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
       animation: animation,
       index: index,
       item: _list[index],
-      name: index.toString(),
-      message: 'Weak reason. No action required.',
-      textReason: 'Report Details',
-      colorPrimary: Colors.greenAccent,
-      colorPositive: Colors.greenAccent,
-      textPositive: 'Keep',
-      colorNegative: Colors.blueAccent,
-      textNegative: 'Archive',
       selected: _selectedItem == _list[index],
       onTap: () {
         setState(() {
@@ -107,6 +99,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
       Vocabulary item, BuildContext context, Animation<double> animation) {
     return CardItem(
       animation: animation,
+      index: item.index,
       item: item,
     );
   }
